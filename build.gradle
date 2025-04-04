@@ -1,0 +1,52 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+}
+
+group = 'com.4irbnb'
+version = '1.0.0'
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
+}
+
+repositories {
+	mavenCentral()
+}
+//공통으로 관리할 의존성만 최소화
+dependencies {
+	//Lombok
+	compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+	//HttpStatus
+	implementation 'org.springframework:spring-web:6.2.5'
+	//DataAccessException
+	implementation 'org.springframework:spring-tx:6.2.5'
+	//jpa
+	implementation 'org.springframework.data:spring-data-jpa:3.4.4'
+	//jakarta
+	implementation 'jakarta.persistence:jakarta.persistence-api:3.2.0'
+
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+			groupId = project.group
+			artifactId = 'common'
+			version = project.version
+		}
+	}
+	repositories {
+		maven {
+			name = "GitHubPackages"
+			url = uri("https://maven.pkg.github.com/4IRBNB/common-module") //변경
+			credentials {
+				username = System.getenv("GPR_USER")
+				password = System.getenv("GPR_KEY")
+			}
+		}
+	}
+}
