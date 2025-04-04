@@ -4,7 +4,7 @@ plugins {
 }
 
 group = 'com.4irbnb'
-version = '1.0.0'
+version = '1.1.0'
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_17
@@ -42,11 +42,14 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/4IRBNB/common-module") //변경
+			url = uri("https://maven.pkg.github.com/4IRBNB/common-module")
 			credentials {
 				username = System.getenv("GPR_USER")
 				password = System.getenv("GPR_KEY")
 			}
 		}
 	}
+}
+tasks.withType(JavaCompile) {
+	options.encoding = 'UTF-8'
 }
