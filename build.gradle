@@ -3,7 +3,7 @@ plugins {
 	id 'maven-publish'
 }
 
-group = 'com.4irbnb'
+group = 'com.fourirbnb'
 version = '1.1.0'
 
 java {
@@ -44,8 +44,8 @@ publishing {
 			name = "GitHubPackages"
 			url = uri("https://maven.pkg.github.com/4IRBNB/common-module")
 			credentials {
-				username = System.getenv("GPR_USER")
-				password = System.getenv("GPR_KEY")
+				username = project.findProperty("gpr.user")
+				password = project.findProperty("gpr.key")
 			}
 		}
 	}
