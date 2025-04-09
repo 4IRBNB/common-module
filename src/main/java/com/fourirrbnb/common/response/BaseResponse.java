@@ -10,31 +10,40 @@ public class BaseResponse<D> {
 
     private D data;
     private Pagination pagination;
-    private String description;
-    private String status;
+    private String message;
+    private int status;
 
-    public static <D> BaseResponse<D> SUCCESS(D data) {
+    public static <D> BaseResponse<D> SUCCESS(D data,String message) {
 
         return BaseResponse.<D>builder()
                 .data(data)
-                .description("SUCCESS")
-                .status("SUCCESS")
+                .message(message)
+                .status(HttpStatus.OK.value())
                 .build();
     }
+    // 커스텀 상태
+    public static <D> BaseResponse<D> SUCCESS(D data,String message, int status) {
 
-    public static <D> BaseResponse<D> SUCCESS(D data, Pagination pagination) {
+        return BaseResponse.<D>builder()
+            .data(data)
+            .message(message)
+            .status(status)
+            .build();
+    }
+
+    public static <D> BaseResponse<D> SUCCESS(D data,String message ,Pagination pagination) {
         return BaseResponse.<D>builder()
                 .data(data)
                 .pagination(pagination)
-                .description("SUCCESS")
-                .status(HttpStatus.OK.toString())
+                .message(message)
+                .status(HttpStatus.OK.value())
                 .build();
     }
 
-    public static <D> BaseResponse<D> FAIL(String description, String status) {
+    public static <D> BaseResponse<D> FAIL(String message, int status) {
 
         return BaseResponse.<D>builder()
-                .description(description)
+                .message(message)
                 .status(status)
                 .build();
     }
