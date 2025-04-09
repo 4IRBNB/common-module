@@ -64,15 +64,11 @@ repositories {
     mavenCentral()
     maven {
         url = uri("https://maven.pkg.github.com/4IRBNB/common-module")
-        credentials {
-            username = project.findProperty("gpr.user")
-            password = project.findProperty("gpr.key")
-        }
     }
 }
 
 dependencies {
-    implementation 'com.fourirbnb:common:1.1.1'
+    implementation 'com.fourirbnb:common:1.1.0'
 }
 ```
 
