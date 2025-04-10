@@ -65,7 +65,7 @@ repositories {
     maven {
         url = uri("https://maven.pkg.github.com/4IRBNB/common-module")
         credentials {
-username = project.findProperty("gpr.user") // 이전처럼 키값은 gradle.properties 로 관리
+          username = project.findProperty("gpr.user") // 이전처럼 키값은 gradle.properties 로 관리
           password = project.findProperty("gpr.key") // user - 개인 사용자(닉네임) / key - 개인 토큰
 		}
     }
