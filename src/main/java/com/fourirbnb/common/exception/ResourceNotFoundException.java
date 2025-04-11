@@ -1,4 +1,4 @@
-package com.fourirrbnb.common.exception;
+package com.fourirbnb.common.exception;
 
 import org.springframework.dao.DataAccessException;
 

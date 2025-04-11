@@ -1,8 +1,14 @@
 # Changelog
+## [1.2.2] - 2025-04-12
+
+### HotFix
+- 잘못 설정된 `groupId` 오타 수정 (`com.fourirrbnb` → `com.fouribnb`)
+- 외부 배포(`groupId = com.fourirbnb`)는 문제 없었으며, 내부 모듈 구조 일관성 확보 목적
+- 기존 버전과 호환되며, 기능 변경 없음
 
 ## [1.2.1] - 2025-04-10
 
-### 변경 사항
+### Added
 - `BaseResponse` 구조 개선
     - `description` → `message`로 필드 명 변경
     - `status`를 `int` 타입으로 유지하고 `HttpStatus.value()` 기반 처리

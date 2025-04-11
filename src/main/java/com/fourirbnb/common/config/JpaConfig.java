@@ -1,4 +1,4 @@
-package com.fourirrbnb.common.config;
+package com.fourirbnb.common.config;
 
 
 import org.springframework.context.annotation.Configuration;

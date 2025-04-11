@@ -1,4 +1,4 @@
-package com.fourirrbnb.common.response;
+package com.fourirbnb.common.response;
 
 import lombok.Builder;
 import lombok.Data;
