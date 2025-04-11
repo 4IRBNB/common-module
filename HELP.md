@@ -1,7 +1,7 @@
 # Read Me First
 The following was discovered as part of building this project:
 
-* The original package name 'com.4irbnb.common' is invalid and this project uses 'com.fourirrbnb.common' instead.
+* The original package name 'com.4irbnb.common' is invalid and this project uses 'com.fourirbnb.common' instead.
 
 # Getting Started
 

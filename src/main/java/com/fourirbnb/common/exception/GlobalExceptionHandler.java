@@ -1,7 +1,7 @@
-package com.fourirrbnb.common.exception;
+package com.fourirbnb.common.exception;
 
 
-import com.fourirrbnb.common.response.BaseResponse;
+import com.fourirbnb.common.response.BaseResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;

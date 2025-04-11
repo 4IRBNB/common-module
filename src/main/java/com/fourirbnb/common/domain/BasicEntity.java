@@ -1,4 +1,4 @@
-package com.fourirrbnb.common.domain;
+package com.fourirbnb.common.domain;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;

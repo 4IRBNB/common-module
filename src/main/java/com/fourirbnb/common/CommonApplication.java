@@ -1,4 +1,4 @@
-package com.fourirrbnb.common;
+package com.fourirbnb.common;
 
 public class CommonApplication {
 }
