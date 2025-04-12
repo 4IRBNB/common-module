@@ -1,8 +1,9 @@
 # Changelog
 ## [1.2.3] - 2025-04-13
 
-### Changed
+### Changed & Add
 - 공통 엔티티 클래스명 `BasicEntity` → `BaseEntity`로 변경 (팀원 요청에 따라 네이밍 통일 목적)
+- QueryDSL 의존성 추가 - `QBasicEntity` 생성 목적
 
 ## [1.2.2] - 2025-04-12
 
