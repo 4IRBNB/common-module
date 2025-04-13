@@ -1,4 +1,10 @@
 # Changelog
+## [1.2.3] - 2025-04-13
+
+### Changed & Add
+- 공통 엔티티 클래스명 `BasicEntity` → `BaseEntity`로 변경 (팀원 요청에 따라 네이밍 통일 목적)
+- QueryDSL 의존성 추가 - `QBasicEntity` 생성 목적
+
 ## [1.2.2] - 2025-04-12
 
 ### HotFix
@@ -8,7 +14,7 @@
 
 ## [1.2.1] - 2025-04-10
 
-### Added
+### Changed
 - `BaseResponse` 구조 개선
     - `description` → `message`로 필드 명 변경
     - `status`를 `int` 타입으로 유지하고 `HttpStatus.value()` 기반 처리
