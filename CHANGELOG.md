@@ -1,13 +1,27 @@
 # Changelog
+## 현재버전 1.2.4
+
+## [1.2.4] - 2025-04-14
+
+### Added
+- `AuditorAwareImpl` 추가: `RequestContextHolder`를 통해 `HttpServletRequest`의 헤더에서 사용자 ID를 꺼내 자동으로 감사 필드(`@CreatedBy`, `@LastModifiedBy`)에 적용되도록 구성
+
+### Changed
+- `JpaConfig`에 `@ConditionalOnProperty`와 `@AutoConfiguration` 설정 추가  
+  → 공통 모듈을 의존하는 서비스 모듈에서 `common.jpa.enabled=true` 설정만 추가하면, 자동으로 JPA 감사 관련 빈이 등록되도록 개선
+
 ## [1.2.3] - 2025-04-13
 
-### Changed & Add
-- 공통 엔티티 클래스명 `BasicEntity` → `BaseEntity`로 변경 (팀원 요청에 따라 네이밍 통일 목적)
+### Add
 - QueryDSL 의존성 추가 - `QBasicEntity` 생성 목적
+
+### Changed
+- 공통 엔티티 클래스명 `BasicEntity` → `BaseEntity`로 변경 (팀원 요청에 따라 네이밍 통일 목적)
+
 
 ## [1.2.2] - 2025-04-12
 
-### HotFix
+### Fixed
 - 잘못 설정된 `groupId` 오타 수정 (`com.fourirrbnb` → `com.fouribnb`)
 - 외부 배포(`groupId = com.fourirbnb`)는 문제 없었으며, 내부 모듈 구조 일관성 확보 목적
 - 기존 버전과 호환되며, 기능 변경 없음
