@@ -1,6 +1,6 @@
 # 🧱 4IRBNB 공통 모듈 (common-module)
 
-> 📦 현재 배포 버전: **`1.2.4`**  
+> 📦 현재 배포 버전: **`1.3.1`**  
 > ☁️ groupId: `com.fourirbnb`
 
 모든 서비스에서 공통적으로 사용하는 DTO, 예외 처리, 응답 포맷, 엔티티 등의 기능을 제공하는 모듈입니다.  
@@ -58,6 +58,35 @@
 
 ---
 
+### 🙋‍♂️ 인증 정보 자동 주입
+
+- @AuthenticatedUser: X-User-Id 헤더를 기반으로 인증 정보(UserInfo) 자동 주입
+
+- AuthenticatedUserArgumentResolver 통해 커스텀 인자 주입 처리
+
+- @AutoConfiguration 기반으로 서비스에서 따로 설정 없이 적용 가능
+```
+  @GetMapping("/me")
+  public ResponseEntity<?> me(@AuthenticatedUser UserInfo user) {
+   return ResponseEntity.ok(user.getUserId());
+  }
+```
+## 🔐 인가 AOP 제공
+
+- @RoleCheck("ROLE"): X-User-Role 헤더 기반 권한 체크
+- 
+- 메서드 단위로 접근 제어 가능
+- 
+- RoleCheckAspect 통해 AOP 방식으로 처리
+
+```
+@RoleCheck("ADMIN")
+@GetMapping("/admin")
+public String adminOnly() {
+    return "관리자 접근 허용됨";
+}
+```
+
 ## ⚙️ 사용법
 
 ### 1. 의존성 추가 (서비스 프로젝트의 `build.gradle`)
@@ -75,7 +104,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.fourirbnb:common:1.2.3'
+    implementation 'com.fourirbnb:common:1.3.1'
 }
 ```
 
@@ -92,7 +121,7 @@ gpr.key=YOUR_PERSONAL_ACCESS_TOKEN
 
 ```bash
 ./gradlew publish
-jar tf build/libs/common-1.2.3.jar  # JAR 파일 내 클래스 확인
+jar tf build/libs/common-1.3.1.jar  # JAR 파일 내 클래스 확인
 ```
 
 ---
