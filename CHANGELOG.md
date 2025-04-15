@@ -1,5 +1,17 @@
 # Changelog
-## 현재버전 1.3.1
+## 현재버전 1.4.0
+
+## [1.4.0] - 2025-04-15
+
+### Added
+- `@NoAuthFeignClient` 커스텀 어노테이션 도입
+    - 인증 정보가 불필요한 FeignClient (예: 회원가입, 로그인, 외부 API 등)에 명시적으로 선언
+    - 불필요한 헤더 전송을 방지하여 보안성과 명확한 책임 분리 확보
+
+- `FeignInterceptor` 자동 구성 기능 추가
+    - 내부 API 요청에만 `X-User-Id`, `X-User-Role` 헤더를 자동으로 포함
+    - `@NoAuthFeignClient` 어노테이션이 붙은 경우 헤더 전송을 생략하도록 분기 처리
+    - Spring Boot 3 기준 `AutoConfiguration.imports` 등록 방식 사용
 
 ## [1.3.1] - 2025-04-15
 
@@ -14,14 +26,14 @@
 ### Added
 - `@AuthenticatedUser` 어노테이션 및 `AuthenticatedUserArgumentResolver` 구현
     - `HttpServletRequest`의 `X-User-Id` 헤더 값을 자동 주입하는 ArgumentResolver 구현
-    - 공통 모듈에서 WebMvcConfigurer를 통해 등록 가능하도록 구성
+  - Spring Boot 3 기준 `AutoConfiguration.imports` 등록 방식 사용
 
 - `@RoleCheck` 어노테이션 및 AOP 기반 인가 처리 (`RoleCheckAspect`)
     - 메서드 단위로 역할(Role)에 따른 인가 제어 가능
     - 헤더 기반 권한 정보(`X-User-Role`)를 기준으로 비교
 
 - `RoleCheckAopConfig` / `AuthenticatedUserConfig` 설정 클래스
-    - 공통 모듈에서 등록을 위해 `@AutoConfiguration` 기반으로 분리 구성
+    - Spring Boot 3 기준 `AutoConfiguration.imports` 등록 방식 사용
   
 - `UserInfo` DTO 추가
     - 인증된 사용자 정보를 담기 위한 공용 데이터 클래스 (확장 가능 구조)

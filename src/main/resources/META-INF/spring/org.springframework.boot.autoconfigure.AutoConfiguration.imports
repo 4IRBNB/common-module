@@ -1,3 +1,4 @@
 com.fourirbnb.common.config.JpaConfig
 com.fourirbnb.common.config.AuthenticatedUserConfig
 com.fourirbnb.common.config.RoleCheckAopConfig
+com.fourirbnb.common.config.FeignInterceptorConfig
