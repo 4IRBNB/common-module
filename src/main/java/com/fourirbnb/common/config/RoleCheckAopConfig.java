@@ -18,7 +18,8 @@ public class RoleCheckAopConfig {
   @Around("@annotation(roleCheck)")
   public Object checkRole(ProceedingJoinPoint joinPoint, RoleCheck roleCheck) throws Throwable {
     //AOP RequestContextHolder
-    ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+    ServletRequestAttributes attrs =
+        (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 
     if (attrs == null) {
       throw new UnauthorizedAccessException("인증정보 없음");

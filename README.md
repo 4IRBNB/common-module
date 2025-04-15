@@ -64,7 +64,7 @@
 
 - AuthenticatedUserArgumentResolver 통해 커스텀 인자 주입 처리
 
-- @AutoConfiguration 기반으로 서비스에서 따로 설정 없이 적용 가능
+- **자동 구성(AutoConfiguration.imports)**을 통해 별도 설정 없이 사용 가능합니다.
 ```
   @GetMapping("/me")
   public ResponseEntity<?> me(@AuthenticatedUser UserInfo user) {
@@ -87,6 +87,29 @@ public String adminOnly() {
 }
 ```
 
+## 🌐 FeignClient 인증 헤더 자동 삽입
+- 내부 API 호출 시, Feign 요청에 자동으로 X-User-Id, X-User-Role 헤더가 추가됩니다.
+
+- 공통 모듈에 포함된 FeignInterceptor가 이를 자동 처리하며,
+- **자동 구성(AutoConfiguration.imports)**을 통해 별도 설정 없이 사용 가능합니다.
+
+## ✅ 인증이 필요 없는 요청 처리
+- 회원가입, 로그인, 외부 API 요청 등 인증 정보가 불필요한 FeignClient는
+- 아래처럼 @NoAuthFeignClient 어노테이션을 선언하면 헤더가 붙지 않습니다.
+
+```
+@FeignClient(name = "authClient", url = "${auth.url}")
+@NoAuthFeignClient
+public interface AuthClient {
+
+    @PostMapping("/login")
+    TokenResponse login(LoginRequest request);
+
+    @PostMapping("/sign-up")
+    void signUp(SignUpRequest request);
+}
+```
+
 ## ⚙️ 사용법
 
 ### 1. 의존성 추가 (서비스 프로젝트의 `build.gradle`)
@@ -104,7 +127,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.fourirbnb:common:1.3.1'
+    implementation 'com.fourirbnb:common:1.4.0'
 }
 ```
 
@@ -121,7 +144,7 @@ gpr.key=YOUR_PERSONAL_ACCESS_TOKEN
 
 ```bash
 ./gradlew publish
-jar tf build/libs/common-1.3.1.jar  # JAR 파일 내 클래스 확인
+jar tf build/libs/common-1.4.0.jar  # JAR 파일 내 클래스 확인
 ```
 
 ---
