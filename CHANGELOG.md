@@ -1,5 +1,30 @@
 # Changelog
-## 현재버전 1.2.4
+## 현재버전 1.3.1
+
+## [1.3.1] - 2025-04-15
+
+### Fixed
+- `1.3.0` 버전에서 누락된 `System.out.println()` 출력 제거
+    - 공통 모듈 내 `UserInfo` 관련 테스트 출력물이 의도치 않게 포함되어 로그에 `"1"`이 출력되는 문제 수정
+    - 동일 버전 반복 배포로 인해 캐시된 `.jar` 파일이 계속 참조되어 발생
+    - 이후 동일 버전 재배포를 피하고, 반드시 **패치 버전 증가**로 배포하도록 정책 변경
+
+## [1.3.0] - 2025-04-15
+
+### Added
+- `@AuthenticatedUser` 어노테이션 및 `AuthenticatedUserArgumentResolver` 구현
+    - `HttpServletRequest`의 `X-User-Id` 헤더 값을 자동 주입하는 ArgumentResolver 구현
+    - 공통 모듈에서 WebMvcConfigurer를 통해 등록 가능하도록 구성
+
+- `@RoleCheck` 어노테이션 및 AOP 기반 인가 처리 (`RoleCheckAspect`)
+    - 메서드 단위로 역할(Role)에 따른 인가 제어 가능
+    - 헤더 기반 권한 정보(`X-User-Role`)를 기준으로 비교
+
+- `RoleCheckAopConfig` / `AuthenticatedUserConfig` 설정 클래스
+    - 공통 모듈에서 등록을 위해 `@AutoConfiguration` 기반으로 분리 구성
+  
+- `UserInfo` DTO 추가
+    - 인증된 사용자 정보를 담기 위한 공용 데이터 클래스 (확장 가능 구조)
 
 ## [1.2.4] - 2025-04-14
 

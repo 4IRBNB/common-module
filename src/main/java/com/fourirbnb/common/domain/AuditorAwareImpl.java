@@ -1,4 +1,4 @@
-package com.fourirbnb.common.config;
+package com.fourirbnb.common.domain;
 
 import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
