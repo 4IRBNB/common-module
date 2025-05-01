@@ -1,6 +1,6 @@
 # 🧱 4IRBNB 공통 모듈 (common-module)
 
-> 📦 현재 배포 버전: **`1.3.1`**  
+> 📦 현재 배포 버전: **`1.5.0`**  
 > ☁️ groupId: `com.fourirbnb`
 
 모든 서비스에서 공통적으로 사용하는 DTO, 예외 처리, 응답 포맷, 엔티티 등의 기능을 제공하는 모듈입니다.  
@@ -127,7 +127,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.fourirbnb:common:1.4.0'
+    implementation 'com.fourirbnb:common:1.5.0'
 }
 ```
 
@@ -144,7 +144,7 @@ gpr.key=YOUR_PERSONAL_ACCESS_TOKEN
 
 ```bash
 ./gradlew publish
-jar tf build/libs/common-1.4.0.jar  # JAR 파일 내 클래스 확인
+jar tf build/libs/common-1.5.0.jar  # JAR 파일 내 클래스 확인
 ```
 
 ---

@@ -1,13 +1,16 @@
 package com.fourirbnb.common.response;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 
 @Data
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class BaseResponse<D> {
-
     private D data;
     private Pagination pagination;
     private String message;

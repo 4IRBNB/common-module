@@ -3,6 +3,7 @@ package com.fourirbnb.common.config;
 import com.fourirbnb.common.exception.UnauthorizedAccessException;
 import com.fourirbnb.common.security.RoleCheck;
 import jakarta.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -26,16 +27,21 @@ public class RoleCheckAopConfig {
     }
     //헤더에서 role 꺼내기
     HttpServletRequest request = attrs.getRequest();
-
-    String role = request.getHeader("X-User-Role");
-
-    String requiredRole = roleCheck.value();
+    String userRole = request.getHeader("X-User-Role");
 
     //role 검사
-    if (!requiredRole.equals(role)) {
-      throw new UnauthorizedAccessException("권한이 없습니다");
+    if (userRole == null || userRole.isBlank()) {
+      throw new UnauthorizedAccessException("권한 정보 없음");
     }
-    //통과시
+
+    String[] requiredRole = roleCheck.value();
+    boolean authorized = Arrays.stream(requiredRole)
+        .anyMatch(role -> role.equalsIgnoreCase(userRole));
+
+    if (!authorized) {
+      throw new UnauthorizedAccessException("접근 권한 없음");
+    }
+
     return joinPoint.proceed();
   }
 }
